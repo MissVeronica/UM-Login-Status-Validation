@@ -8,7 +8,7 @@ Account_status test for status = 'approved' added.
 
 All other status values including pre-defined UM values are rejected login.
 
-A filter hook can be used for custom account_status validation.
+A filter hook 'um_login_status_validation' can be used for custom account_status validation.
 
 New error exit "forbidden" added for invalid user_id with default error text "An error has been encountered" and URL err=forbidden.
 
