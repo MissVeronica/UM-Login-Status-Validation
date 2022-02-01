@@ -4,7 +4,7 @@ Additional tests for user_id valid format integer and not empty.
 
 Clear of the user UM cache and refresh loading of cache added.
 
-Account_status test for status = 'approved' added.
+Account_status test for status = 'approved' added and allowed to login.
 
 All other status values including pre-defined UM values are rejected login.
 
