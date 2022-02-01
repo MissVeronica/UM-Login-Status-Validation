@@ -10,6 +10,10 @@ All other status values except pre-defined UM values are rejected login.
 
 A filter hook can be used for custom account_status validation.
 
+New error exit "forbidden" added for invalid user_id with default error text (err=forbidden).
+
+Invalid account_status values also with default error text (err='value')
+
 ## Installation 
 Install to your child-theme’s functions.php file or
 use the “Code Snippets” plugin:
