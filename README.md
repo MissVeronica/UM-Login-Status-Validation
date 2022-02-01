@@ -6,7 +6,7 @@ Clear of the user UM cache and refresh loading of cache added.
 
 Account_status test for status = 'approved' added.
 
-All other status values except pre-defined UM values are rejected login.
+All other status values including pre-defined UM values are rejected login.
 
 A filter hook can be used for custom account_status validation.
 
