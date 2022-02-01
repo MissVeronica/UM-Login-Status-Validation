@@ -15,7 +15,7 @@ New error exit "forbidden" added for invalid user_id with default error text "An
 Invalid account_status values also with default error text "An error has been encountered" and URL err='status value'.
 
 ## Installation 
-Install to your child-theme’s functions.php file or
+Install the source.php file to your child-theme’s functions.php file or
 use the “Code Snippets” plugin:
 
 https://wordpress.org/plugins/code-snippets/
