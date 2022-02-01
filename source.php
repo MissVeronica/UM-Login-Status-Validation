@@ -33,9 +33,9 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
                         exit( wp_redirect( add_query_arg( 'err', esc_attr( $status ), UM()->permalinks()->get_current_url() ) ) );
                         break;
 
-    case 'approved':    break;
+                case 'approved':    break;
 
-    default:            
+                default:            
                         $login_status_validation = apply_filters( 'um_login_status_validation', false, $status, $user_id );
                         if( !$login_status_validation ) {
                             um_reset_user();
@@ -45,6 +45,6 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
 	}
 
 	if ( isset( $args['form_id'] ) && $args['form_id'] == UM()->shortcodes()->core_login_form() && UM()->form()->errors && ! isset( $_POST[ UM()->honeypot ] ) ) {
-        exit( wp_redirect( um_get_core_page( 'login' ) ) );
+           exit( wp_redirect( um_get_core_page( 'login' ) ) );
 	}
 }
