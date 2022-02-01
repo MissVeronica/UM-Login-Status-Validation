@@ -19,7 +19,7 @@ Logging of time, user_id and Reject code for the last 10 rejects.
 
 Shortcode [reject_login_log] to list the reject log in the front-end for an Admin.
 
-Parameters example: [reject_login_log meta_keys="country,description,user_registered,user_email"]
+Parameters example: [reject_login_log meta_keys="mobile_number,description,user_registered,user_email"]
 
 Valid user meta-keys comma separated for additional columns to the log listing.
 
@@ -31,4 +31,4 @@ https://wordpress.org/plugins/code-snippets/
 
 ### Version 2
 Replace the source.php file with source2.php in your child-theme’s functions.php file or
-use the “Code Snippets” plugin.
+the “Code Snippets” plugin.
