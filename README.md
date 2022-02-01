@@ -1,4 +1,4 @@
-# UM-Login-Status-Validation
+# UM Login Status Validation
 ## Functions added/changed
 Additional tests for user_id valid format integer and not empty.
 
