@@ -1,8 +1,7 @@
 <?php
 
-
 remove_action( 'um_submit_form_errors_hook_logincheck', 'um_submit_form_errors_hook_logincheck', 9999 );
-add_action( 'um_submit_form_errors_hook_logincheck', 'ibiza69_submit_form_errors_hook_logincheck', 9999, 1 );
+add_action( 'um_submit_form_errors_hook_logincheck', 'my_um_submit_form_errors_hook_logincheck', 9999, 1 );
 add_shortcode( 'reject_login_log', 'reject_login_log_shortcode' );
 
 function reject_login_log_shortcode( $atts ) {
@@ -97,7 +96,7 @@ function reject_login_log_shortcode( $atts ) {
 }
 
 
-function ibiza69_reject_login_log( $user_id, $error ) {
+function my_um_reject_login_log( $user_id, $error ) {
 
     $log = get_option( 'um_reject_login_log' );
     if( empty( $log )) $log = array();
@@ -108,7 +107,7 @@ function ibiza69_reject_login_log( $user_id, $error ) {
     update_option( 'um_reject_login_log', $log );
 }
 
-function ibiza69_submit_form_errors_hook_logincheck( $args ) {
+function my_um_submit_form_errors_hook_logincheck( $args ) {
 
 	if ( is_user_logged_in() ) {
 		wp_logout();
@@ -125,15 +124,15 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
                 if( array_key_exists( 'incorrect_password', UM()->form()->errors )) $error_code = 'incorrect_password';
                 else $error_code = 'user_password';
                 $username = $_REQUEST['username-' . $_REQUEST['form_id']];
-                ibiza69_reject_login_log( $username, $error_code);
+                my_um_reject_login_log( $username, $error_code);
                 return;
             }
             
-            ibiza69_reject_login_log( $user_id, array_key_first( UM()->form()->errors ));
+            my_um_reject_login_log( $user_id, array_key_first( UM()->form()->errors ));
             return;
         }
 
-        ibiza69_reject_login_log( $user_id, 'forbidden' );
+        my_um_reject_login_log( $user_id, 'forbidden' );
         um_reset_user();
         exit( wp_redirect( add_query_arg( 'err', esc_attr( 'forbidden' ), UM()->permalinks()->get_current_url() ) ) );
     }
@@ -150,7 +149,7 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
 		case 'awaiting_admin_review':
 		case 'awaiting_email_confirmation':
 		case 'rejected':
-                            ibiza69_reject_login_log( $user_id, $status );
+                            my_um_reject_login_log( $user_id, $status );
                             um_reset_user();
                             exit( wp_redirect( add_query_arg( 'err', esc_attr( $status ), UM()->permalinks()->get_current_url() ) ) );
                             break;
@@ -160,7 +159,7 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
         default:            
                             $login_status_validation = apply_filters( 'um_login_status_validation', false, $status, $user_id );
                             if( !$login_status_validation ) {
-                                ibiza69_reject_login_log( $user_id, $status );
+                                my_um_reject_login_log( $user_id, $status );
                                 um_reset_user();
                                 exit( wp_redirect( add_query_arg( 'err', esc_attr( $status ), UM()->permalinks()->get_current_url() ) ) );
                             }
@@ -168,7 +167,7 @@ function ibiza69_submit_form_errors_hook_logincheck( $args ) {
 	}
 
 	if ( isset( $args['form_id'] ) && $args['form_id'] == UM()->shortcodes()->core_login_form() && UM()->form()->errors && ! isset( $_POST[ UM()->honeypot ] ) ) {        
-        ibiza69_reject_login_log( $user_id, array_key_first( UM()->form()->errors ));
+        my_um_reject_login_log( $user_id, array_key_first( UM()->form()->errors ));
         exit( wp_redirect( um_get_core_page( 'login' ) ) );
 	}
 }
