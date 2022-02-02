@@ -27,7 +27,9 @@ Shortcode [reject_login_log] to list the reject log in the front-end for an Admi
 
 User Info listed by the shortcode: Date and Time, Rejected code, User ID, Username, Role, Registration date.
 
-Parameters example: [reject_login_log meta_keys="mobile_number,user_email,description"]
+Parameters example: 
+
+[reject_login_log meta_keys="mobile_number,user_email,description"]
 
 Valid user meta-keys, comma separated for additional columns to the shortcode log listing.
 ## Installation 
